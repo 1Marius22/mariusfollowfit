@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Protected pages live under `src/routes/_authenticated/` (client-only gate redirecting to `/login`); why: session lives in browser storage.
+- Workout reads/writes use the browser Cloud client with RLS scoped to `auth.uid()`; why: no server secrets needed for per-user data.
+- Form validation rules live in `src/lib/workout-schema.ts` with tests beside it; why: one source for form rules.
